@@ -1,8 +1,7 @@
+import { Inter } from "next/font/google";
+
 import { QueryHydrate } from "@/components/Query/QueryHydrate";
 import QueryProvider from "@/components/Query/QueryProvider";
-import { getTodos } from "@/services/todos";
-import { Hydrate, dehydrate } from "@tanstack/react-query";
-import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 

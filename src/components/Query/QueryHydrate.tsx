@@ -1,6 +1,7 @@
-import { getTodos, getTodosRoute } from "@/services/todos";
 import { Hydrate, QueryClient, dehydrate } from "@tanstack/react-query";
 import { cache } from "react";
+
+import { getTodos, getTodosRoute } from "@/services/todos";
 
 export const getQueryClient = cache(() => new QueryClient());
 

@@ -1,6 +1,6 @@
-import { Todo as ITodo } from "@/services/todos";
+import type { Todo as ITodo } from "@/services/todos";
 
-interface Props extends ITodo {}
+type Props = ITodo
 
 const Todo = ({ title, content, createdAt, updatedAt }: Props) => {
   return (

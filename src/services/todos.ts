@@ -25,7 +25,7 @@ export type CreateTodoDto = Pick<Todo, "title" | "content">;
 export const createTodo = async ({ title, content }: CreateTodoDto) => {
   return TodoApi("/todos", {
     method: "POST",
-    headers: { Authorization: localStorage.getItem("token")! },
+    headers: { Authorization: localStorage.getItem("token") as string },
     body: JSON.stringify({ title, content }),
   });
 };

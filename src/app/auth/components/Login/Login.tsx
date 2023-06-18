@@ -1,7 +1,8 @@
 "use client";
 
-import { useLoginUser } from "../hooks/useLoginUser";
 import { useRouter } from "next/navigation";
+
+import { useLoginUser } from "../hooks/useLoginUser";
 
 const Login = () => {
   const router = useRouter();

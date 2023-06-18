@@ -1,6 +1,7 @@
+import { Suspense } from "react";
+
 import AddTodo from "@/app/components/Todos/AddTodo";
 import TodoList from "@/app/components/Todos/TodoList";
-import { Suspense } from "react";
 
 export default async function Home() {
   return (
