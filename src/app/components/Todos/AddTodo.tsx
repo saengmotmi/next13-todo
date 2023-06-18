@@ -1,51 +1,37 @@
 "use client";
 
-import { TODO_API } from "@/services/todos";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
+import { useCreateTodo } from "./hooks/useCreateTodo";
 
 const AddTodo = () => {
   const client = useQueryClient();
 
-  const { mutateAsync } = useMutation(
-    ["/todos/create"],
-    ({ title, contents }: { title: string; contents: string }) => {
-      return fetch(TODO_API + "/todos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: localStorage.getItem("token")!,
-        },
-        body: JSON.stringify({
-          title,
-          contents,
-        }),
-      });
+  const { mutateAsync } = useCreateTodo();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.target as HTMLFormElement & {
+      title: { value: string };
+      content: { value: string };
+    };
+
+    const res = await mutateAsync({
+      title: form.title.value,
+      content: form.content.value,
+    });
+
+    if (res.ok) {
+      alert("등록이 완료되었습니다.");
+
+      await client.invalidateQueries(["todos"]);
     }
-  );
+  };
 
   return (
-    <form
-      onSubmit={async (e) => {
-        e.preventDefault();
-
-        const form = e.target as HTMLFormElement & {
-          title: { value: string };
-          contents: { value: string };
-        };
-        const res = await mutateAsync({
-          title: form.title.value,
-          contents: form.contents.value,
-        });
-
-        if (res.ok) {
-          alert("등록이 완료되었습니다.");
-
-          await client.invalidateQueries(["todos"]);
-        }
-      }}
-    >
+    <form onSubmit={handleSubmit}>
       <input type="text" name="title" placeholder="title" />
-      <input type="text" name="contents" placeholder="contents" />
+      <input type="text" name="content" placeholder="content" />
       <button>등록</button>
     </form>
   );
