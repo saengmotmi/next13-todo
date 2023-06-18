@@ -13,7 +13,7 @@ export interface Todo {
 export const getTodosRoute = () => "/todos";
 
 export const getTodos = async () => {
-  const response = await fetch(getTodosRoute());
+  const response = await TodoApi(getTodosRoute());
   const { data } = await response.json();
   return data as Todo[];
 };
