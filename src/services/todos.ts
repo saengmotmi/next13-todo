@@ -8,8 +8,10 @@ export interface Todo {
   updatedAt: string;
 }
 
+export const getTodosRoute = () => "/todos";
+
 export const getTodos = async () => {
-  const response = await fetch(TODO_API + "/todos", {
+  const response = await fetch(TODO_API + getTodosRoute(), {
     headers: {
       "Content-Type": "application/json",
       Authorization:

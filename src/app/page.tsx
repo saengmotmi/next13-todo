@@ -1,5 +1,6 @@
-import AddTodo from "@/components/Todos/AddTodo";
-import TodoList from "@/components/Todos/TodoList";
+import AddTodo from "@/app/components/Todos/AddTodo";
+import TodoList from "@/app/components/Todos/TodoList";
+import { Suspense } from "react";
 
 export default async function Home() {
   return (
@@ -10,7 +11,9 @@ export default async function Home() {
           <AddTodo />
         </div>
         <div>
-          <TodoList />
+          <Suspense fallback={<div>로딩 중...</div>}>
+            <TodoList />
+          </Suspense>
         </div>
       </div>
     </div>
