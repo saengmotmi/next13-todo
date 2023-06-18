@@ -1,20 +1,17 @@
-import Todo from "@/components/Todos/Todo";
+import AddTodo from "@/components/Todos/AddTodo";
+import TodoList from "@/components/Todos/TodoList";
 
-export default function Home() {
+export default async function Home() {
   return (
     <div>
       <div>todos</div>
       <div>
         <div>
-          <input type="text" />
-          <button>등록</button>
+          <AddTodo />
         </div>
-        <ul>
-          <Todo />
-          <Todo />
-          <Todo />
-          <Todo />
-        </ul>
+        <div>
+          <TodoList />
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-import { getTodos } from "@/services/todos";
 import { Hydrate, QueryClient, dehydrate } from "@tanstack/react-query";
 import { cache } from "react";
 
@@ -10,10 +9,6 @@ export const QueryHydrate = async ({
   children: React.ReactNode;
 }) => {
   const client = getQueryClient();
-  await client.prefetchQuery({
-    queryKey: ["todos"],
-    queryFn: () => getTodos(),
-  });
   const dehydratedState = dehydrate(client, {
     shouldDehydrateQuery: () => true,
   });
