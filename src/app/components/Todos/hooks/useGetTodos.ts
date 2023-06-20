@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import type { Todo} from "@/services/todos";
+import type { Todo } from "@/services/todos";
 import { getTodos, getTodosRoute } from "@/services/todos";
 
 export const useGetTodos = () => {
