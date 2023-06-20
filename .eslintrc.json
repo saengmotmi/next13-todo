@@ -20,5 +20,8 @@
         "newlines-between": "always"
       }
     ]
+  },
+  "settings": {
+    "import/external-module-folders": [".yarn"]
   }
 }
